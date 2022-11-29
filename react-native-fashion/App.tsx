@@ -1,25 +1,36 @@
 import * as React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import Onboarding from './src/Authentication/Onboarding';
-import { LoadAssets } from "./src/components"
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import {createStackNavigator} from "@react-navigation/stack";
+
+import { assets as authenticationAssets, AuthenticationNavigator } from "./src/Authentication";
+import { ThemeProvider } from './src/components/Theme';
+import { LoadAssets } from "./src/components";
+import { HomeNavigator, assets as homeAssets } from "./src/Home";
+import { AppRoutes } from "./src/components/Navigation";
+
+const assets = [...authenticationAssets, homeAssets];
 
 const fonts = {
-  "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
-  "SFProText-Semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),
-  "SFProText-Regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
+    "Bold": require("./assets/fonts/SFPro-Display-Bold.ttf"),
+    "SemiBold": require("./assets/fonts/SFPro-Display-Semibold.ttf"),
+    "Medium": require("./assets/fonts/SFPro-Display-Medium.ttf"),
+    "Regular": require("./assets/fonts/SFPro-Display-Regular.ttf"),
 };
-const AuthenticationStack = createStackNavigator();
-const AuthenticationNavigator = () => {
+
+const AppStack = createStackNavigator<AppRoutes>()
+
+
+export default function App () {
     return (
-    <AuthenticationStack.Navigator>
-         <AuthenticationStack.Screen name='=Onboarding' component={Onboarding}/>
-    </AuthenticationStack.Navigator>
+        <ThemeProvider>
+            <LoadAssets {...{ fonts, assets }}>
+                <SafeAreaProvider>
+                    <AppStack.Navigator headerMode="none">
+                        <AppStack.Screen name="Authentication" component={AuthenticationNavigator} />
+                        <AppStack.Screen name="Home" component={HomeNavigator} />
+                    </AppStack.Navigator>
+                </SafeAreaProvider>
+            </LoadAssets>
+        </ThemeProvider>
     );
-}
-export default function App() {
-  return (
-    <LoadAssets {...{fonts}}>
-      <AuthenticationNavigator />
-    </LoadAssets>
-  );
 }
