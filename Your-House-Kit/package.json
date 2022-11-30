@@ -1,0 +1,77 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "lint": "eslint --fix .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "app/**/*.{js,jsx,ts,tsx,md,html,css}": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ]
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "@react-navigation/drawer": "^6.1.8",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/stack": "^6.0.11",
+    "dayjs": "^1.10.7",
+    "expo": "^45.0.0",
+    "expo-app-loading": "~2.0.0",
+    "expo-asset": "~8.5.0",
+    "expo-constants": "~13.1.1",
+    "expo-font": "~10.1.0",
+    "expo-image-picker": "~13.1.1",
+    "expo-linear-gradient": "~11.3.0",
+    "expo-status-bar": "~1.3.0",
+    "formik": "^2.2.9",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-gesture-handler": "~2.2.1",
+    "react-native-keyboard-aware-scrollview": "^2.1.0",
+    "react-native-reanimated": "~2.8.0",
+    "react-native-redash": "^16.2.3",
+    "react-native-safe-area-context": "4.2.4",
+    "react-native-screens": "~3.11.1",
+    "react-native-svg": "12.3.0",
+    "react-native-web": "0.17.7",
+    "react-navigation": "^4.4.4",
+    "styled-components": "^5.3.3",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/eslint-parser": "^7.16.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.3",
+    "metro-react-native-babel-preset": "^0.73.3",
+    "prettier": "^2.5.1",
+    "react-native-svg-transformer": "^0.14.3"
+  },
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "extends": "react-native-wcandillon",
-  "rules": {
-    "camelcase": 0,
-    "max-len": 0,
-    "react-native/no-unused-styles": 0,
-    "no-nested-ternary": 0
-  }
-}
